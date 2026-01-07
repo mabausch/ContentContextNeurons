@@ -6,7 +6,7 @@ figure('Resize', 'off', 'Units', 'centimeters', 'Position', [0 0 svgData.figureW
 
 population_type = 'patient';
 % population_type = 'session';
-Hh1g
+
 set(0, 'defaultaxesfontname', 'Arial'),set(0, 'defaulttextfontname', 'Arial')
 %% Compute z-values for each mere context neuron
 % sn = get_unitinfo('sitenums');
