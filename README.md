@@ -2,7 +2,7 @@
 
 This repository contains code and data accompanying the following paper: 
 
-### Distinct neuronal populations in the human brain combine content and context across temporal gaps
+### Distinct neuronal populations in the human brain combine content and context
 
 Marcel Bausch<sup>1</sup>, Johannes Niediek<sup>1</sup>, Thomas P. Reber<sup>1,2*</sup>, Sina Mackay<sup>1</sup>, Jan Boström<sup>3</sup>, Christian E. Elger<sup>1</sup>, Florian Mormann<sup>1</sup>
 
@@ -25,13 +25,15 @@ To reproduce the figures in the manuscript, start MATLAB, navigate to the reposi
 
 ```matlab
 cd('/Path/to/this/repo');
-addpath(pwd);
+addpath(genpath(pwd));
 
 % To generate Figure 2E
 plot_figure_2E
 
 % To derive neuron counts with specific significance threshold
 alpha_level = 10^-3; 
+load all_unitinfo
+load rmANOVA
 valid_neurons = find(get_unitinfo('sitenums', all_unitinfo) & get_unitinfo('session', all_unitinfo) ~= 26);
 stimulus_neurons = sum(all_ps(valid_neurons, 1) < alpha_level);
 context_neurons = sum(all_ps(valid_neurons, 2) < alpha_level);
@@ -41,6 +43,16 @@ stimulus_context_neurons = sum(all_ps(valid_neurons, 3) < alpha_level);
 fprintf('Neurons responding to stimulus: %d\n', stimulus_neurons);
 fprintf('Neurons responding to context: %d\n', context_neurons);
 fprintf('Neurons responding to stimulus-context interaction: %d\n', stimulus_context_neurons);
+
+% To generate Figure 3
+plot_fig3
+
+% To generate Figure 4
+plot_fig4
+
+% To generate Figure 5
+plot_fig5
+
 ```
 
 ## Data Files
